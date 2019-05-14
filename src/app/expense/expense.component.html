@@ -1,0 +1,25 @@
+<div class="container">
+      <div class="container">
+          <h2 class="float-left">Despesas</h2>
+          <a routerLink="/expense" class="btn btn-link float-right">Nova despesa</a>
+      </div>
+      <table mdbTable class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th *ngFor="let head of headElements" scope="col"> {{head}} </th>
+              <th style="text-align: center" scope="col" colspan="2">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol *ngFor="let expense of expenses">
+              <th scope="row">{{expense.id}}</th>
+              <td>{{expense.description}}</td>
+              <td>{{expense.note}}</td>
+              <td>{{expense.amount}}</td>
+              <td>{{toMoment(expense.createat)}}</td>
+              <td><button (click)='editExpense(expense)' class="btn btn-success btn-sm">Editar</button></td>
+              <td><button (click)='removeExpense(expense)' class="btn btn-danger btn-sm">Excluir</button></td>
+            </tr>
+          </tbody>
+      </table>
+</div>
